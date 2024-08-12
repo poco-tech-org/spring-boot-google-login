@@ -43,3 +43,15 @@ dependencies {
 tasks.named('test') {
 	useJUnitPlatform()
 }
+
+// templates に変更があったときに hot reload するために追加（IntelliJ IDEA で開発する場合に必要）
+// 以下のすべての条件をみたすときに、Thymeleaf のテンプレートに対する hot reload が有効になります。
+//
+// * dependencies に spring-boot-devtools が追加されている
+// * Gradle ツールウィンドウの bootRun タスクから起動している
+// * （この設定がある）
+//
+// ただし、新しいテンプレートの内容を表示するにはブラウザのリロードが必要です。
+tasks.named('bootRun') {
+	sourceResources sourceSets.main
+}
